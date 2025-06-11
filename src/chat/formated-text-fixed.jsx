@@ -8,11 +8,11 @@ export const FormattedText = ({ text }) => {
     let currentIndex = 0
     let partKey = 0
 
-    // Regex para encontrar código entre \`\`\`, texto en negrita entre **, y fórmulas LaTeX
+    // Regex para encontrar código entre ```, texto en negrita entre **, y fórmulas LaTeX
     const codeRegex = /```[\s\S]*?```/g
     const boldRegex = /\*\*(.*?)\*\*/g
-    const blockMathRegex = /\\\[([\s\S]*?)\\\]/g // Para fórmulas en bloque \[ ... \]
-    const inlineMathRegex = /\\$$([\s\S]*?)\\$$/g // Para fórmulas inline $$ ... $$
+    const blockMathRegex = /\\\[([\s\S]*?)\\\]/g
+    const inlineMathRegex = /\\$$([\s\S]*?)\\$$/g
 
     // Encontrar todas las coincidencias
     const codeMatches = Array.from(input.matchAll(codeRegex))
@@ -97,23 +97,23 @@ export const FormattedText = ({ text }) => {
         parts.push(
           <div
             key={partKey++}
-            className="my-6 flex justify-center"
+            className="my-4 w-full"
             style={{
               contain: "layout",
-              maxWidth: "100%",
-              overflow: "auto",
+              isolation: "isolate",
             }}
           >
             <div
-              className="bg-gray-50 p-4 rounded-lg border border-gray-200 max-w-full"
+              className="bg-gray-50 p-4 rounded-lg border border-gray-200 w-full text-center"
               style={{
-                display: "inline-block",
-                minWidth: "fit-content",
+                display: "block",
+                position: "relative",
+                zIndex: 1,
               }}
             >
               <BlockMath
                 math={match.innerContent}
-                renderError={(error) => <span className="text-red-500 text-sm">Error en fórmula: {error.message}</span>}
+                renderError={(error) => <span className="text-red-500 text-sm">Error en fórmula: {String(error)}</span>}
               />
             </div>
           </div>,
@@ -122,10 +122,11 @@ export const FormattedText = ({ text }) => {
         parts.push(
           <span
             key={partKey++}
-            className="inline-block mx-1"
+            className="inline-block align-baseline mx-1"
             style={{
               contain: "layout",
-              verticalAlign: "baseline",
+              position: "relative",
+              zIndex: 1,
             }}
           >
             <InlineMath
@@ -156,10 +157,12 @@ export const FormattedText = ({ text }) => {
 
   return (
     <div
-      className="prose prose-gray max-w-none"
+      className="prose prose-gray max-w-none w-full"
       style={{
         contain: "layout style",
-        overflow: "hidden",
+        isolation: "isolate",
+        position: "relative",
+        zIndex: 1,
       }}
     >
       {formatText(text)}
