@@ -73,7 +73,6 @@ Content-Type: application/json
       }
     }
   ],
-  ...
 }
 ```
 
