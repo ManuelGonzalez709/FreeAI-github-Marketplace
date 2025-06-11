@@ -43,7 +43,7 @@ Puedes interactuar directamente con la API usando Postman o cualquier cliente HT
 
 **Endpoint:**
 ```
-POST https://free-ai-github-marketplace-d2pfysda3.vercel.app/api/openai
+POST https://models.github.ai/inference/chat/completions
 ```
 
 **Headers:**
