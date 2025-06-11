@@ -1,72 +1,113 @@
-![image](https://github.com/user-attachments/assets/6d9617ca-ef31-44ee-b358-b4e10f187250)
+# FreeAI GitHub Marketplace 🚀🤖
 
-# 🏖️ Marina Rent - Plataforma de alquiler de objetos de playa
+[![Vercel Deploy](https://img.shields.io/badge/Deployed%20on-Vercel-000?logo=vercel)](https://free-ai-github-marketplace-d2pfysda3.vercel.app/)
+[![GitHub](https://img.shields.io/github/license/ManuelGonzalez709/FreeAI-github-Marketplace?style=flat-square)](LICENSE)
+[![Made with React](https://img.shields.io/badge/Made%20with-React-61dafb?logo=react&logoColor=white)](https://reactjs.org/)
+[![OpenAI](https://img.shields.io/badge/OpenAI%20API-GitHub%20Marketplace-blue?logo=openai)](https://github.com/marketplace?type=actions&query=openai)
 
-BeachRent es una aplicación web desarrollada en **React** que permite alquilar objetos relacionados con la playa por hora y según el número de personas. El sistema está conectado a una API REST desarrollada con **Laravel**, y permite tanto a usuarios comunes como a administradores gestionar publicaciones y reservas.
+---
 
-## 🚀 Tecnologías utilizadas
+## 🌟 ¿Qué es este proyecto?
 
-- **Frontend**: React (Vite)
-- **Backend**: Laravel API REST
-- **Autenticación**: JWT o tokens Laravel Sanctum (según implementación)
-- **Estilos**: TailwindCSS / CSS Modules / Styled Components (según tu stack)
-- **Routing**: React Router
-- **Manejo de estado**: React Context / Redux / Hooks personalizados (según tu stack)
+**FreeAI GitHub Marketplace** es una página web desarrollada en **React** que te permite disfrutar de la API de **OpenAI** completamente **GRATIS** gracias al Marketplace de GitHub.  
+¡No necesitas pagar ni suscribirte a OpenAI! Simplemente utiliza tu propio **token de GitHub** para acceder a la IA.
 
-## 🌐 Base URL`s
+---
 
-La aplicación se encuentra desplegada en la siguiente URL:
+## 🟢 ¿Cómo funciona?
 
-[https://manu.cicloflorenciopintado.es/](https://manu.cicloflorenciopintado.es/)
+- Utiliza la integración de OpenAI disponible en el [GitHub Marketplace](https://github.com/marketplace?type=actions&query=openai).
+- El backend hace las peticiones a la API de OpenAI empleando tu token de GitHub, por lo que **NO necesitas una API Key de OpenAI**.
+- Todo el código es abierto y puedes desplegarlo o usarlo directamente en Vercel.
 
-La aplicación se comunica con el servidor a través de la siguiente URL base:
+---
 
-[https://manu.cicloflorenciopintado.es/laravel/public/api/](https://manu.cicloflorenciopintado.es/laravel/public/api/)
+## 🌐 Demo en Vivo
 
-## 📚 Estructura de la base de datos
+👉 [free-ai-github-marketplace-d2pfysda3.vercel.app](https://free-ai-github-marketplace-d2pfysda3.vercel.app/)
 
-La base de datos del proyecto consta de 3 tablas principales:
+---
 
-- **usuarios**: contiene la información de los usuarios registrados, incluyendo el rol (admin o usuario).
-- **publicaciones**: objetos disponibles para alquilar (sombrillas, hamacas, tablas, etc.).
-- **reservas**: registros de reservas con referencia al usuario, publicación, fecha, hora y número de personas.
+## 🛡️ Requisitos
 
-## 🔐 Roles del sistema
+- Solo necesitas un **token de GitHub** (puedes generarlo desde [aquí](https://github.com/settings/tokens)).
+  - **Nota:** Con permisos mínimos de lectura es suficiente.
 
-- **Usuario común**:
-  - Puede registrarse e iniciar sesión.
-  - Puede ver las publicaciones disponibles.
-  - Puede realizar reservas por hora y por número de personas.
-  - Puede gestionar sus propias reservas.
+---
 
-- **Administrador**:
-  - Accede a un panel de administración.
-  - Puede crear, editar y eliminar publicaciones.
-  - Puede ver todas las reservas.
-  - Puede gestionar usuarios si está habilitado.
+## 🧑‍💻 ¿Cómo hacer una petición a la API desde Postman?
 
-## 📦 Instalación
+Puedes interactuar directamente con la API usando Postman o cualquier cliente HTTP.
 
-1. **Clona el repositorio**:
+### 📬 Ejemplo de petición
 
-```bash
-git clone https://github.com/tu-usuario/beachrent.git
-cd beachrent
-````
-2. **Instala las dependencias**:
-   
-```bash
-npm install
-````
-3. **Configura las variables de entorno**:
+**Endpoint:**
+```
+POST https://free-ai-github-marketplace-d2pfysda3.vercel.app/api/openai
+```
 
-```bash
-const URLSERVER = "https://manu.cicloflorenciopintado.es/laravel/";
-export const API_URL = URLSERVER+"public/"
-export const IMAGE_URL = URLSERVER+"storage/app/public/photos/";
-````
-4. **Ejecuta la Aplicacion**:
-   
-```bash
-npm run dev
-````
+**Headers:**
+```
+Authorization: Bearer TU_TOKEN_DE_GITHUB
+Content-Type: application/json
+```
+
+**Body (JSON):**
+```json
+{
+  "prompt": "Escribe un poema sobre los gatos.",
+  "max_tokens": 100
+}
+```
+
+**Respuesta esperada:**
+```json
+{
+  "choices": [
+    {
+      "text": "Los gatos saltan y juegan bajo el sol..."
+    }
+  ]
+}
+```
+
+---
+
+## 📝 Pasos para probarlo
+
+1. **Consigue tu token de GitHub:**  
+   Ve a [GitHub Tokens](https://github.com/settings/tokens) y crea uno nuevo.  
+   ![GitHub Token](https://img.shields.io/badge/GitHub-Token-blue?logo=github)
+
+2. **Prueba la demo online:**  
+   Accede a [la web desplegada](https://free-ai-github-marketplace-d2pfysda3.vercel.app/), introduce tu token y ¡empieza a chatear con la IA!  
+   ![AI Chat](https://img.shields.io/badge/Chat%20con-OpenAI-green?logo=openai)
+
+3. **Haz peticiones vía Postman o tu propio código:**  
+   Simplemente sigue el ejemplo de arriba.
+
+---
+
+## 🛠️ Tecnologías usadas
+
+- [React](https://reactjs.org/) ⚛️
+- [Vercel](https://vercel.com/) 🚀
+- [GitHub Marketplace](https://github.com/marketplace) 🛒
+- [OpenAI API](https://platform.openai.com/docs/) 🤖
+
+---
+
+## 🎁 Contribuciones
+
+¡Las contribuciones son bienvenidas! Haz un fork, propone cambios o reporta cualquier issue.
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia [MIT](LICENSE).
+
+---
+
+¡Gracias por usar **FreeAI GitHub Marketplace**!  
+💬 [ManuelGonzalez709](https://github.com/ManuelGonzalez709)
