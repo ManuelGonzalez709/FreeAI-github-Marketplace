@@ -24,7 +24,7 @@
 
 ## 🌐 Demo en Vivo
 
-👉 [free-ai-github-marketplace-d2pfysda3.vercel.app](https://free-ai-github-marketplace-d2pfysda3.vercel.app/)
+👉 [free-ai-github-marketplace.vercel.app](free-ai-github-marketplace.vercel.app)
 
 ---
 
