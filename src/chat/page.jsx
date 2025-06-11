@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import { MODELS } from "./models"
+import { FormattedText } from "./formated-text-display"
 
 export default function ChatApp() {
   const [apiKey, setApiKey] = useState("")
@@ -23,7 +24,6 @@ export default function ChatApp() {
       setIsApiKeySet(true)
       setApiKey(savedApiKey)
     } else {
-      // Limpiar localStorage si hay datos corruptos
       localStorage.removeItem("gh-models-token")
       setShowSettings(true)
     }
@@ -39,7 +39,6 @@ export default function ChatApp() {
   const handleApiKeySubmit = (e) => {
     e.preventDefault()
     const trimmedApiKey = apiKey.trim()
-
     if (trimmedApiKey && trimmedApiKey.startsWith("ghp_")) {
       localStorage.setItem("gh-models-token", trimmedApiKey)
       setIsApiKeySet(true)
@@ -69,15 +68,11 @@ export default function ChatApp() {
     return MODELS.find((model) => model.id === selectedModel) || MODELS[0]
   }
 
-  // Construye la estructura de mensajes para el endpoint
+  // SOLO los últimos dos mensajes anteriores de usuario (y el nuevo)
   const buildApiMessages = (allMessages) => {
-    if (allMessages.length === 0) return []
-    if (allMessages.length === 1 && allMessages[0].role === "user") {
-      return [{ role: "user", content: allMessages[0].content }]
-    }
-    const systemMessages = allMessages.slice(0, -1).map((msg) => ({ role: "system", content: msg.content }))
-    const lastMsg = allMessages[allMessages.length - 1]
-    return [...systemMessages, { role: "user", content: lastMsg.content }]
+    const userMessages = allMessages.filter((m) => m.role === "user")
+    // Siempre envía los dos anteriores + el actual (o todos si hay menos)
+    return userMessages.slice(-6).map((m) => ({ role: "user", content: m.content }))
   }
 
   const sendMessage = async (e) => {
@@ -123,7 +118,6 @@ export default function ChatApp() {
     }
   }
 
-  // Pantalla de configuración de API Key
   if (!isApiKeySet || showSettings) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
@@ -450,7 +444,11 @@ export default function ChatApp() {
                             : "bg-gray-100 text-gray-800 border border-gray-200"
                         }`}
                       >
-                        <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                        {message.role === "assistant" ? (
+                          <FormattedText text={message.content} />
+                        ) : (
+                          <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                        )}
                       </div>
                     </div>
                   </div>
