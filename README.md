@@ -16,7 +16,7 @@
 
 ## 🟢 ¿Cómo funciona?
 
-- Utiliza la integración de OpenAI disponible en el [GitHub Marketplace](https://github.com/marketplace?type=actions&query=openai).
+- Utiliza la integración de OpenAI disponible en el [GitHub Marketplace](https://github.com/marketplace?type=models&query=openai).
 - El backend hace las peticiones a la API de OpenAI empleando tu token de GitHub, por lo que **NO necesitas una API Key de OpenAI**.
 - Todo el código es abierto y puedes desplegarlo o usarlo directamente en Vercel.
 
