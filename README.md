@@ -55,8 +55,10 @@ Content-Type: application/json
 **Body (JSON):**
 ```json
 {
-  "prompt": "Escribe un poema sobre los gatos.",
-  "max_tokens": 100
+  "messages": [
+    { "role": "user", "content": "¿Cuál es la capital de Francia?" }
+  ],
+  "model": "openai/gpt-4o-mini"
 }
 ```
 
@@ -65,9 +67,13 @@ Content-Type: application/json
 {
   "choices": [
     {
-      "text": "Los gatos saltan y juegan bajo el sol..."
+      "message": {
+        "role": "assistant",
+        "content": "La capital de Francia es París."
+      }
     }
-  ]
+  ],
+  ...
 }
 ```
 
