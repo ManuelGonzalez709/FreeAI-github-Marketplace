@@ -24,7 +24,7 @@
 
 ## 🌐 Demo en Vivo
 
-👉 [free-ai-github-marketplace.vercel.app](free-ai-github-marketplace.vercel.app)
+👉 [free-ai-github-marketplace.vercel.app](https://free-ai-github-marketplace.vercel.app)
 
 ---
 
@@ -85,7 +85,7 @@ Content-Type: application/json
    ![GitHub Token](https://img.shields.io/badge/GitHub-Token-blue?logo=github)
 
 2. **Prueba la demo online:**  
-   Accede a [la web desplegada](https://free-ai-github-marketplace-d2pfysda3.vercel.app/), introduce tu token y ¡empieza a chatear con la IA!  
+   Accede a [la web desplegada](https://free-ai-github-marketplace.vercel.app), introduce tu token y ¡empieza a chatear con la IA!  
    ![AI Chat](https://img.shields.io/badge/Chat%20con-OpenAI-green?logo=openai)
 
 3. **Haz peticiones vía Postman o tu propio código:**  
